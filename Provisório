@@ -37,18 +37,16 @@ public class Jogo {
 		}
 		
 		Player1.nome = "X"; //Nome do Jogador 1: "X"
-		Player1.posicao = 0; //
+		Player1.posicaoNova = 0; //
 		
-		System.out.println("");
-		System.out.println("Novo Jogo");
-		System.out.println("");
-		 
+		System.out.println("\n Novo Jogo \n");
+				 
+		Player1.posicaoNova += valorDoDado.JogarDado();
+		System.out.println(Player1.posicaoNova);
+		tabuleiro[Player1.posicaoNova - 1] = Player1.nome; //Vai preencher a nova posição do Jogador com o nome dele.
+		//O "-1" é porque as posições dos vetores contam a partir de 0, então a posição corespondente no vetor é uma unidade a meos 
 		
-		Player1.posicao += valorDoDado.JogarDado();
-		System.out.println(Player1.posicao);
-		tabuleiro[Player1.posicao - 1] = Player1.nome;
-		
-		for(i = 0; i < 100; i++){ //printa o tabuleiro
+		for(i = 0; i < 100; i++){ //printa o tabuleiro 
 			if(i < 10){
 				System.out.print(tabuleiro[i] + "  ");	
 			} else {
@@ -59,13 +57,38 @@ public class Jogo {
 			}
 		}
 		
+		System.out.println("\n Próximo Jogador \n");
+		System.out.println("Jogador 1:");
+		Player1.posicaoAntiga = Player1.posicaoNova;
+		Player1.posicaoAntigaEmString = Integer.toString(Player1.posicaoAntiga);
+		Player1.posicaoNova += valorDoDado.JogarDado();
+		System.out.println("Posição Antiga: " + Player1.posicaoAntiga); //serve para saber qual valor está saindo
+		System.out.println("Posição Nova: " + Player1.posicaoNova); //serve para saber qual valor está saindo
+		System.out.println("Valor do Dado: " + (Player1.posicaoNova - Player1.posicaoAntiga)); //serve para saber qual valor está saindo
+		tabuleiro[Player1.posicaoAntiga -1] = Player1.posicaoAntigaEmString; //Na posição antiga do Jogador, vai ser preenchida pelo número da posição correspondente (que é a própria posição antiga do Jogador)
+		tabuleiro[Player1.posicaoNova - 1] = Player1.nome; //A posição nova é preenchida com o nome do Jogador
+		
+		for(i = 0; i < 100; i++){ //printa o tabuleiro 
+			if(i < 10){
+				System.out.print(tabuleiro[i] + "  ");	
+			} else {
+				System.out.print(tabuleiro[i] + " ");
+			}
+			if((i+1)%10 == 0){
+				System.out.println("");
+			}
+		}
+		
+		
+		
 	}
 }
 
-
 class Jogador{
 	String nome;
-	int posicao;
+	int posicaoNova;
+	int posicaoAntiga;
+	String posicaoAntigaEmString;
 	
 }
 
