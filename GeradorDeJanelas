@@ -1,0 +1,18 @@
+package jogo;
+
+import javax.swing.JFrame;
+
+
+class GeradorDeJanelas extends JFrame{
+    public GeradorDeJanelas(){
+        add(new Tabuleiro());
+        setTitle("Escadas & Cobras(UFPA Edition)");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(560,440);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+    public static void main(String[]args){
+        new GeradorDeJanelas();
+    }
+}
