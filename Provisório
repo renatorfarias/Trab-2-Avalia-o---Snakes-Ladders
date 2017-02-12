@@ -60,7 +60,7 @@ public class Jogo {
 		JOptionPane.showMessageDialog(null, "Novo Jogo");
 		for(j = 0; j < 3; j++){
 			Player1.posicaoNovaDoJogador += valorDoDado.JogarDado(); //Posição Nova = Posição Nova + Valor do Dado
-			JOptionPane.showMessageDialog(null,"Valor do Dado: " + Player1.posicaoNovaDoJogador); //Para fazer o debug do código
+			JOptionPane.showMessageDialog(null,"Valor do Dado: " + (Player1.posicaoNovaDoJogador - Player1.posicaoAntigaDoJogador)); //Para fazer o debug do código
 			tabuleiro[Player1.posicaoNovaDoJogador - 1] = Player1.nome; //Vai preencher a nova posição do Jogador com o nome dele.
 			//O "-1" é porque as posições dos vetores contam a partir de 0, então a posição corespondente no vetor é uma unidade a meos 
 		
@@ -80,7 +80,7 @@ public class Jogo {
 			JOptionPane.showMessageDialog(null, "Jogador 2");
 						
 			Player2.posicaoNovaDoJogador += valorDoDado.JogarDado(); //Posição Nova = Posição Nova + Valor do Dado
-			JOptionPane.showMessageDialog(null, "Valor do Dado: " + Player2.posicaoNovaDoJogador); //Para fazer o debug do código
+			JOptionPane.showMessageDialog(null, "Valor do Dado: " + (Player2.posicaoNovaDoJogador - Player2.posicaoAntigaDoJogador)); //Para fazer o debug do código
 			tabuleiro[Player2.posicaoNovaDoJogador - 1] = Player2.nome;  //Vai preencher a nova posição do Jogador com o nome dele.
 			//O "-1" é porque as posições dos vetores contam a partir de 0, então a posição corespondente no vetor é uma unidade a meos
 			
@@ -105,17 +105,14 @@ public class Jogo {
 			Player1.posicaoAntigaDoJogadorEmString = Integer.toString(Player1.posicaoAntigaDoJogador); //Transformar a posição do jogador (int) em String para poder inserir no vetor tabuleiro[]
 			Player1.posicaoNovaDoJogador += valorDoDado.JogarDado(); //Redefinindo a nova posição do Jogador1
 			
+			System.out.println("Posição Antiga: " + Player2.posicaoAntigaDoJogador);//serve para saber qual valor está saindo
+			System.out.println("Posição Nova: " + Player2.posicaoNovaDoJogador); //serve para saber qual valor está saindo
+			System.out.println("Valor do Dado: " + (Player2.posicaoNovaDoJogador - Player2.posicaoAntigaDoJogador)); //serve para saber qual valor está saindo
+			
 			if(Player1.posicaoNovaDoJogador == cobra1.posicaoInicialDaCobra){ //Verifica se a posição Nova do Jogador for igual a posição inicial da Cobra
 				tabuleiro[Player1.posicaoAntigaDoJogador -1] = Player1.posicaoAntigaDoJogadorEmString; //A posição antiga do Jogador é preenchido com o número respectivoà posição
 				tabuleiro[cobra1.posicaoFinalDaCobra -1] = Player1.nome; //A posição final da cobra é preenchida com o Nome do Jogador
-				JOptionPane.showMessageDialog(null, "Posição Antiga: " + Player1.posicaoAntigaDoJogador); //serve para saber qual valor está saindo 
-				JOptionPane.showMessageDialog(null, "Posição Nova: " + Player1.posicaoNovaDoJogador); //serve para saber qual valor está saindo
-				JOptionPane.showMessageDialog(null, "Valor do Dado: " + (Player1.posicaoNovaDoJogador - Player1.posicaoAntigaDoJogador)); //serve para saber qual valor está saindo 
-			
 			} else {
-				JOptionPane.showMessageDialog(null, "Posição Antiga: " + Player1.posicaoAntigaDoJogador); //serve para saber qual valor está saindo 
-				JOptionPane.showMessageDialog(null, "Posição Nova: " + Player1.posicaoNovaDoJogador); //serve para saber qual valor está saindo 
-				JOptionPane.showMessageDialog(null, "Valor do Dado: " + (Player1.posicaoNovaDoJogador - Player1.posicaoAntigaDoJogador)); //serve para saber qual valor está saindo 
 				tabuleiro[Player1.posicaoAntigaDoJogador -1] = Player1.posicaoAntigaDoJogadorEmString; //Na posição antiga do Jogador, vai ser preenchida pelo número da posição correspondente (que é a própria posição antiga do Jogador)
 				tabuleiro[Player1.posicaoNovaDoJogador - 1] = Player1.nome; //A posição nova é preenchida com o nome do Jogador
 			}
@@ -141,12 +138,9 @@ public class Jogo {
 			Player2.posicaoAntigaDoJogadorEmString = Integer.toString(Player2.posicaoAntigaDoJogador); //Transformar a posição do jogador (int) em String para poder inserir no vetor tabuleiro[]
 			Player2.posicaoNovaDoJogador += valorDoDado.JogarDado(); //Redefinindo a nova posição do Jogador1
 			
-			JOptionPane.showMessageDialog(null, "Posição Antiga: " + Player2.posicaoAntigaDoJogador); //serve para saber qual valor está saindo
-			System.out.println("Posição Antiga: " + Player2.posicaoAntigaDoJogador);
-			JOptionPane.showMessageDialog(null, "Posição Nova: " + Player2.posicaoNovaDoJogador); //serve para saber qual valor está saindo
-			System.out.println("Posição Nova: " + Player2.posicaoNovaDoJogador);
-			JOptionPane.showMessageDialog(null, "Valor do Dado: " + (Player2.posicaoNovaDoJogador - Player2.posicaoAntigaDoJogador)); //serve para saber qual valor está saindo
-			System.out.println("Valor do Dado: " + (Player2.posicaoNovaDoJogador - Player2.posicaoAntigaDoJogador));
+			System.out.println("Posição Antiga: " + Player2.posicaoAntigaDoJogador); //serve para saber qual valor está saindo
+			System.out.println("Posição Nova: " + Player2.posicaoNovaDoJogador); //serve para saber qual valor está saindo
+			System.out.println("Valor do Dado: " + (Player2.posicaoNovaDoJogador - Player2.posicaoAntigaDoJogador)); //serve para saber qual valor está saindo
 			
 			if(Player2.posicaoNovaDoJogador == cobra1.posicaoInicialDaCobra){ //Verifica se a posição Nova do Jogador for igual a posição inicial da Cobra
 				tabuleiro[Player2.posicaoAntigaDoJogador -1] = Player2.posicaoAntigaDoJogadorEmString; //A posição antiga do Jogador é preenchido com o número respectivoà posição
